@@ -1,0 +1,8 @@
+# API конфигурация для бенчмарков
+
+qwen3.5-0.8b:
+  endpoint: http://192.168.45.90:8092/v1
+  model: Qwen3.5-0.8B-Q8_0.gguf
+  api_key: not-needed
+  max_tokens: 4096  # щедро, т.к. reasoning_content съедает часть
+  temperature: 0.0
