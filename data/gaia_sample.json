@@ -1,0 +1,37 @@
+[
+  {
+    "id": "gaia_test_0",
+    "Question": "What is the result of 1234567 * 8901234?",
+    "Answer": "10989225129118",
+    "Level": 0,
+    "Topic": "arithmetic"
+  },
+  {
+    "id": "gaia_test_1",
+    "Question": "Calculate the sum of all prime numbers between 1 and 100.",
+    "Answer": "1060",
+    "Level": 0,
+    "Topic": "math"
+  },
+  {
+    "id": "gaia_test_2",
+    "Question": "What is the 10th Fibonacci number (starting with 0, 1)?",
+    "Answer": "55",
+    "Level": 0,
+    "Topic": "math"
+  },
+  {
+    "id": "gaia_test_3",
+    "Question": "Convert 100 kilometers to miles. (1 km = 0.621371 miles)",
+    "Answer": "62.1371",
+    "Level": 0,
+    "Topic": "conversion"
+  },
+  {
+    "id": "gaia_test_4",
+    "Question": "How many days are there in 2 years and 3 months? Assume non-leap years.",
+    "Answer": "828",
+    "Level": 0,
+    "Topic": "time"
+  }
+]

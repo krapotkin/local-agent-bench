@@ -1,0 +1,10 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Commonly used binary types
+*.gguf binary
+*.bin binary
+*.parquet binary
+
+# Data files
+*.json eol=lf

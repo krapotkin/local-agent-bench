@@ -3,7 +3,7 @@
 
 import json, requests
 
-BASE = "http://192.168.45.90:8092/v1"
+BASE = "http://192.168.45.10:8092/v1"
 
 # Test: Simple function calling
 # We ask the model to call get_weather for San Francisco

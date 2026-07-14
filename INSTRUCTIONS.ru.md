@@ -19,7 +19,7 @@
 ```
 ┌─────────────────────────┐       HTTP (OpenAI API)       ┌──────────────────────┐
 │  Твой сервер (RTX 4060) │ ◄─────────────────────────── │ Сервер с Hermes      │
-│  llama.cpp + Qwen3.5    │    http://192.168.45.90:8092  │ Запускает тесты BFCL │
+│  llama.cpp + Qwen3.5    │    http://192.168.45.10:8092  │ Запускает тесты BFCL │
 │  0.8B-Q8_0.gguf         │                               │                      │
 └─────────────────────────┘                               └──────────────────────┘
 ```
@@ -31,8 +31,7 @@ local-agent-bench/
 ├── configs/
 │   └── api_config.yaml       — API-конфигурация для бенчмарков
 ├── scripts/
-│   ├── run_bfcl_local.py      — Скрипт запуска BFCL (v1, устаревший)
-│   ├── run_bfcl_local_v2.py   — Скрипт запуска BFCL (v2, актуальный)
+│   ├── run_bfcl_local_v2.py   — BFCL benchmark
 │   └── test_function_calling.py — Быстрый тест function calling
 ├── results/
 │   └── bfcl/
@@ -119,7 +118,7 @@ mkdir -p configs scripts results/bfcl/{scores,qwen3.5-0.8b-q8_0}
 ```bash
 cat > .env << 'EOF'
 # Адрес твоего llama-server
-OPENAI_BASE_URL=http://192.168.45.90:8092/v1
+OPENAI_BASE_URL=http://192.168.45.10:8092/v1
 OPENAI_API_KEY=not-needed
 EOF
 ```
@@ -128,7 +127,7 @@ EOF
 
 ```yaml
 qwen3.5-0.8b:
-  endpoint: http://192.168.45.90:8092/v1
+  endpoint: http://192.168.45.10:8092/v1
   model: Qwen3.5-0.8B-Q8_0.gguf
   api_key: not-needed
   max_tokens: 4096   # щедро, т.к. reasoning_content съедает часть
@@ -138,7 +137,7 @@ qwen3.5-0.8b:
 ### 2.5. Проверка связи
 
 ```bash
-curl -s http://192.168.45.90:8092/v1/models
+curl -s http://192.168.45.10:8092/v1/models
 ```
 
 Должен вернуть JSON со списком моделей.
@@ -293,7 +292,7 @@ results/
 | Таймауты | Уменьши `max_tokens` с 4096 до 2048, или увеличь `timeout` в скрипте |
 | Модель не вызывает функции | Убедись, что модель поддерживает function calling. Qwen3.5 — да |
 | Неверные имена функций | Qwen3.5 может убирать префиксы (math.gcd → gcd). Скрипт учитывает это (`suffix_match`) |
-| Сервер недоступен | Проверь `curl http://192.168.45.90:8092/v1/models` |
+| Сервер недоступен | Проверь `curl http://192.168.45.10:8092/v1/models` |
 
 ---
 
@@ -306,6 +305,3 @@ results/
 ### `scripts/run_bfcl_local_v2.py`
 Полноценный прогон BFCL. Загружает тесты, шлёт запросы к API,
 сравнивает с эталонными ответами (ground_truth), сохраняет результаты.
-
-### `scripts/run_bfcl_local.py` (устаревший)
-Первая версия. Содержит баги, используйте v2.

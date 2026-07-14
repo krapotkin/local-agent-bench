@@ -1,8 +1,0 @@
-{
-  "category": "simple_python",
-  "model": "Qwen3.5-0.8B-Q8_0.gguf",
-  "correct": 322,
-  "total": 400,
-  "accuracy": 80.5,
-  "api_errors": 71
-}
